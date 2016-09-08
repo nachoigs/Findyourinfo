@@ -12,6 +12,7 @@ class info:
         self.twitter_birth = ''
         self.twitter_bio = ''
         self.facebook_location = ''
+        self.facebook_birthloc = ''
         self.facebook_work = []
         self.facebook_studies = []
         type(self).counter += 1

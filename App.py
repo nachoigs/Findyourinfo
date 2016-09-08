@@ -68,7 +68,8 @@ def bing():
 		if re.search("https://www.facebook.com/(?!public)[\w\W]*" + firstterm, x.link, re.IGNORECASE):
 			print(x.link)
 			soup = BeautifulSoup(requests.get(x.link).content, 'html5lib')
-			x.facebook_location = soup.find(id='current_city').a.string + '. ' if soup.find(id='current_city') else x.facebook_location
+			x.facebook_location = soup.find(id='current_city').find(class_='_50f5 _50f7').string + '. ' if soup.find(id='current_city') else x.facebook_location
+			x.facebook_location = soup.find(id='hometown').find(class_='_50f5 _50f7').string + '. ' if soup.find(id='current_city') else x.facebook_location
 
 			
 			for y in soup.find("", {"data-pnref":"edu"}).find_all(class_="_42ef"):
@@ -76,7 +77,6 @@ def bing():
 
 			for y in soup.find("", {"data-pnref":"work"}).find_all(class_="_42ef"):
 				x.facebook_work.append(' - '.join(y.find_all(string=True)))
-
 	# print(json.dumps(bingjson, sort_keys=True, indent=4, separators=(',', ': ')))
 
 	return render_template("index.html", infolist=infolist)

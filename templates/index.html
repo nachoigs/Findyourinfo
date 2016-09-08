@@ -27,6 +27,16 @@
 					</div>
 				</div>
 			</form>
+
+			<pre class="pre-scrollable">
+			Información:
+			{% for info in infolist %}
+				{% for x in info.__dict__ %}
+				{{x}}: {{info.__dict__[x]}}
+				{% endfor %}
+			{% endfor %}
+			</pre>
+
 		</p>
 	</div>
 
