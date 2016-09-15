@@ -56,7 +56,7 @@ def bing():
 		text = x['snippet']
 		infolist.append(info(schemenetloc, link, text, ''))
 
-	result = ''
+
 	for x in infolist:
 		if re.search('twitter.com/'+searchterm, x.link):
 			soup = BeautifulSoup(requests.get('http://twitter.com/' + searchterm).content, 'html5lib')
@@ -107,7 +107,7 @@ def google():
 			x.twitter_location = soup.find(class_="ProfileHeaderCard-locationText u-dir").string if soup.find(class_="ProfileHeaderCard-locationText u-dir") else x.twitter_location
 			x.twitter_birth = soup.find(class_="ProfileHeaderCard-birthdateText u-dir").span.string if soup.find(class_="ProfileHeaderCard-birthdateText u-dir") else x.twitter_birth
 			x.twitter_bio = ''.join(text for text in soup.find(class_="ProfileHeaderCard-bio u-dir").find_all(string=True)) if soup.find(class_="ProfileHeaderCard-bio u-dir") else x.twitter_bio
-			
+
 		if re.search("https://www.facebook.com/[\w\W]*"+firstterm, x.link, re.IGNORECASE):
 			soup = BeautifulSoup(requests.get(x.link).content, 'html5lib')
 			x.facebook_location = soup.find(id='current_city').a.string + '. ' if soup.find(id='current_city') else x.facebook_location
@@ -119,3 +119,9 @@ def google():
 				x.facebook_work.append(' - '.join(y.find_all(string=True)))
 
 	return render_template("index.html", infolist=infolist)
+
+@app.route('/tinfoleak')
+def tinfoleak():
+	# Show Twitter info using TinfoLeak
+
+	user = request.args.get('user', '')
