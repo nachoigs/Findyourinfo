@@ -1446,7 +1446,8 @@ def generates_HTML_file(parameters, user, source, hashtag, mention, geolocation,
 			'geo_toplocations': geolocation.toploc,
 			'geo_toplocations_count': len(geolocation.toploc)
 		}
-		
+		# I just want the template data
+
 		#html_content = jinja2_env.get_template('ReportTemplate/tinfoleak-theme.html').render(template_values)
 		return template_values
 							
@@ -1502,7 +1503,6 @@ def get_information(args, parameters):
 		user_tweets = User_Tweets()
 		
 		if args.sources or args.hashtags or args.mentions or args.d or args.file or args.number or args.text:
-		
 			page = 1
 			tweets_count = 0	
 			while True:
@@ -1721,7 +1721,7 @@ def main(args):
 		sdatetime = datetime.datetime.now()
 		
 		# Obtain the information requested
-		get_information(args, parameters)
+		templatedata = get_information(args, parameters)
 		
 		# Show the elapsed time
 		tdelta = datetime.datetime.now() - sdatetime
@@ -1731,6 +1731,8 @@ def main(args):
 		print("\nSee you soon!\n")
 		
 		parameters.elapsedtime = (hours, minutes, seconds)
+
+		return templatedata
 		
 	except Exception as e:
 		show_error(e)
