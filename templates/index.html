@@ -29,7 +29,7 @@
             <h1>Welcome to Find Your Info!</h1>
             <p>This page will help you to find all the possible information about a user on different social networks and webpages.</p>
             <div class="col-md-10 col-md-offset-1 col-xs-12">
-	            <form action="/bing" method="get">
+	            <form action="/" method="get">
 	  				<div class="form-group row">
 	   					<label for="search" class="col-md-2 col-form-label col-form-label-lg">Name to search</label>
 	   					<div class="col-sm-8">
@@ -62,7 +62,7 @@
          	{% for info in infolist %}
          		{% for twitter_info in info.twitter_infos %}
 
-	         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card">
+	         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card" style="cursor: pointer">
 		                <div class="thumbnail">
 		                	<div class="col-xs-12">
 		                    <img src="{{ twitter_info.urlimg }}" class="img-rounded img-responsive col-md-push-4 col-md-4 col-xs-push-2 col-xs-8" alt="">
@@ -81,7 +81,7 @@
 	            	</div>
 	            {% endfor %}
 	         	{% for facebook_info in info.facebook_infos %}
-		         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card">
+		         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card" style="cursor: pointer">
 			                <div class="thumbnail">
 			                	<div class="col-xs-12">
 			                    <img src="{{ facebook_info.urlimg }}" class="img-rounded img-responsive col-md-push-4 col-md-4 col-xs-push-2 col-xs-8" alt="">
@@ -115,7 +115,7 @@
 
 	         	{% for linkedin_info in info.linkedin_infos %}
 
-		         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card">
+		         		<div id="card" class="col-md-6 col-xs-12 hero-feature change-column twitter_card" style="cursor: pointer">
 			                <div class="thumbnail">
 			                	<div class="col-xs-12">
 			                    <img src="{{ linkedin_info.topcard.picture }}" class="img-rounded img-responsive col-md-push-4 col-md-4 col-xs-push-2 col-xs-8" alt="">
@@ -174,19 +174,6 @@
 		            	</div>
 		        {% endfor %}
          	{% endfor %}
-         	<div id="card" class="col-md-6 col-xs-12 hero-feature change-column">
-                <div class="thumbnail">
-                    <img src="" class="img-rounded img-responsive" alt="">
-                    <hr>
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
         {% endif %}
      
         <!-- /.row -->
@@ -197,7 +184,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+               
                 </div>
             </div>
         </footer>
